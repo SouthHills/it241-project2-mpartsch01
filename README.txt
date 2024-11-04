@@ -1,0 +1,8 @@
+README
+
+Hello!
+This project contains two files--- one examples XSS (cross site scripting) and the other is an example of CSRF (cross site request forgery)
+The file called XSS has two instances of the same form, but with one key difference. The file named xss.php is missing the key script htmlentities from the $name variable. Without this, the site doesn't know to block JavaScript or HTML commands from being executed to the form of the site. When testing this, not only did it change the display of the site in a way that I could predict, but it also changed the implementation of the form in a way I did not predict. Play around with it yourself and see how just missing one key aspect from one line of code and compromise the whole application.
+The other file is called csrf and has two instances of a money transfer form. One of these instances implements a specialized token that is authenticated between the server and the client so only the client's requests are sent to the server, and if the token of the requestor doesn't match that of the browser, the request will not execute. In my example, I wanted to show the user directly what their token may look like, as this is always going to be abstracted by the browser. In the index.php file, you can see that it outputs the token below where it asks for bank account details. However, in the file named evil.php, it is missing the imperative checking of if the tokens match between the server and the client. Without this check, a malicious actor could easily swoop in and compromise a client's banking details.
+I hope this code was able to offer an insight into safer server side developing practices. Happy coding!
+<3 Michaela Sallese
